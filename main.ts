@@ -9,6 +9,18 @@ radio.onReceivedString(function (receivedString) {
         }
     }
 })
+input.onButtonPressed(Button.B, function () {
+    if (DEAD_MAN_RANGE < -35) {
+        radio.sendValue("body", 381)
+    }
+})
+radio.onReceivedValue(function (name, value) {
+    if (value == 381 && name == "body") {
+        basic.showString("Body found!")
+    }
+})
+let DEAD_MAN_RANGE = 0
+DEAD_MAN_RANGE = radio.receivedPacket(RadioPacketProperty.SignalStrength)
 radio.setGroup(7)
 radio.setTransmitPower(6)
 basic.showString("You are CREWMATE")
