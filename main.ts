@@ -26,4 +26,5 @@ radio.setTransmitPower(6)
 basic.showString("You are CREWMATE")
 basic.forever(function () {
     basic.showIcon(IconNames.StickFigure)
+    radio.sendNumber(9)
 })
